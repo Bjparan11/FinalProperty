@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2025 at 02:02 PM
+-- Generation Time: May 19, 2025 at 03:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `rems`
+-- Database: `property`
 --
 
 -- --------------------------------------------------------
@@ -39,38 +39,22 @@ CREATE TABLE `logs_table` (
 --
 
 INSERT INTO `logs_table` (`logs_id`, `i_id`, `logs_action`, `logs_date`) VALUES
-(1, 8, 'Admin Logged in', '2025-05-02 08:38:30'),
-(2, 8, 'Admin Logged in', '2025-05-02 08:53:41'),
-(3, 8, 'Admin Logged in', '2025-05-02 08:55:02'),
-(4, 8, 'Updated account image for user: test1', '2025-05-02 08:55:16'),
-(5, 8, 'Admin Logged in', '2025-05-02 08:59:15'),
-(6, 8, 'Admin Logged in', '2025-05-02 09:00:35'),
-(7, 8, 'Admin Logged in', '2025-05-02 09:01:39'),
-(8, 8, 'Admin Logged in', '2025-05-02 09:02:32'),
-(9, 8, 'Admin Logged in', '2025-05-02 09:05:11'),
-(10, 8, 'Admin Logged in', '2025-05-02 09:05:56'),
-(11, 8, 'Logged out', '2025-05-02 09:05:58'),
-(12, 8, 'Admin Logged in', '2025-05-02 09:11:46'),
-(13, 8, 'Admin Logged in', '2025-05-02 09:13:27'),
-(14, 9, 'Registered new user: test2', '2025-05-02 09:14:12'),
-(15, 8, 'Admin Logged out', '2025-05-02 09:15:27'),
-(16, 8, 'Admin Logged in', '2025-05-02 09:17:28'),
-(17, 8, 'Admin Logged in', '2025-05-02 09:19:25'),
-(18, 10, 'Admin Logged in', '2025-05-02 09:24:06'),
-(19, 11, 'Admin Logged in', '2025-05-02 09:27:05'),
-(20, 11, 'Admin Logged in', '2025-05-02 09:28:17'),
-(21, 11, 'Admin Logged in', '2025-05-02 09:29:41'),
-(22, 11, 'Updated account details for user: sample1', '2025-05-02 09:30:13'),
-(23, 11, 'Admin Logged out', '2025-05-02 09:30:33'),
-(24, 11, 'Admin Logged in', '2025-05-02 11:07:24'),
-(25, 11, 'Updated account image for user: sample1', '2025-05-02 11:07:38'),
-(26, 11, 'Opened USER record for update:  12', '2025-05-02 11:11:12'),
-(27, 11, 'Updated account details for user: sample1', '2025-05-02 11:11:27'),
-(28, 11, 'Admin Logged out', '2025-05-02 11:17:02'),
-(29, 12, 'User Logged in', '2025-05-02 11:17:15'),
-(30, 12, 'Updated account image for user: test', '2025-05-02 11:18:02'),
-(31, 12, 'User Logged in', '2025-05-02 11:24:53'),
-(32, 12, 'Admin Logged out', '2025-05-02 11:25:08');
+(1, 1, 'Admin Logged in', '2025-05-19 01:06:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `properties`
+--
+
+CREATE TABLE `properties` (
+  `id` int(20) NOT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `structure` varchar(20) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `status` varchar(20) DEFAULT 'Available',
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -96,8 +80,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`i_id`, `i_fname`, `i_lname`, `i_username`, `i_password`, `i_email`, `i_phonenumber`, `i_type`, `status`, `i_image`) VALUES
-(11, 'sample1', 'sample1', 'sample1', '73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=', 'sample1@gmail.com', '12345678888', 'Admin', 'Active', 'src/usersImages/sample1.jpg'),
-(12, 'test', 'test', 'test', '73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=', 'test@gmail.com', '10101010101', 'User', 'Active', 'src/usersImages/test.jpg');
+(1, 'ross', 'sabio', 'ross123', 'ky88G1YlfOhTmsJp16q0JVDaz4gY0HXwvfGZBWKq4+8=', 'ross123@gmail.com', '09123457892', 'Admin', 'Active', NULL);
 
 --
 -- Indexes for dumped tables
@@ -109,6 +92,12 @@ INSERT INTO `user` (`i_id`, `i_fname`, `i_lname`, `i_username`, `i_password`, `i
 ALTER TABLE `logs_table`
   ADD PRIMARY KEY (`logs_id`),
   ADD KEY `i_id` (`i_id`);
+
+--
+-- Indexes for table `properties`
+--
+ALTER TABLE `properties`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -124,13 +113,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `logs_table`
 --
 ALTER TABLE `logs_table`
-  MODIFY `logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `properties`
+--
+ALTER TABLE `properties`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `i_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `i_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -140,7 +135,7 @@ ALTER TABLE `user`
 -- Constraints for table `logs_table`
 --
 ALTER TABLE `logs_table`
-  ADD CONSTRAINT `user_logs` FOREIGN KEY (`i_id`) REFERENCES `user` (`i_id`);
+  ADD CONSTRAINT `logs_table_ibfk_1` FOREIGN KEY (`i_id`) REFERENCES `user` (`i_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
